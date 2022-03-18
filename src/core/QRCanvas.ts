@@ -31,7 +31,7 @@ export default class QRCanvas {
   _canvas: HTMLCanvasElement;
   _options: RequiredOptions;
   _qr?: QRCode;
-  _image?: HTMLImageElement;
+  _image?: HTMLImageElement | SVGImageElement;
 
   //TODO don't pass all options to this class
   constructor(options: RequiredOptions) {
@@ -85,9 +85,20 @@ export default class QRCanvas {
       const coverLevel = imageOptions.imageSize * errorCorrectionPercents[qrOptions.errorCorrectionLevel];
       const maxHiddenDots = Math.floor(coverLevel * count * count);
 
+      let width;
+      let height;
+
+      if (this._image instanceof SVGElement) {
+        width = this._image.width.baseVal.value;
+        height = this._image.width.baseVal.value;
+      } else {
+        width = this._image.naturalWidth;
+        height = this._image.naturalHeight;
+      }
+
       drawImageSize = calculateImageSize({
-        originalWidth: this._image.width,
-        originalHeight: this._image.height,
+        originalWidth: width,
+        originalHeight: height,
         maxHiddenDots,
         maxHiddenAxisDots: count - 14,
         dotSize
