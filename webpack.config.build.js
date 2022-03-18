@@ -1,4 +1,4 @@
-const commonConfig = require('./webpack.config.common.js');
+const commonConfig = require("./webpack.config.common.js");
 const config = commonConfig;
 
 module.exports = (env, argv) => {
