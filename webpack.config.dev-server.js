@@ -9,7 +9,7 @@ module.exports = merge(commonConfig, {
     new HtmlWebpackPlugin({
       template: "./src/index.html",
       inject: "head",
-      scriptLoading: "blocking",
+      scriptLoading: "blocking"
     })
   ]
 });

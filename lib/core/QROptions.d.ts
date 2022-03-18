@@ -1,6 +1,7 @@
-import { DotType, Options, TypeNumber, ErrorCorrectionLevel, Mode, DrawType, Gradient } from "../types";
+import { ShapeType, DotType, Options, TypeNumber, ErrorCorrectionLevel, Mode, DrawType, Gradient } from "../types";
 export interface RequiredOptions extends Options {
     type: DrawType;
+    shape: ShapeType;
     width: number;
     height: number;
     margin: number;
@@ -22,6 +23,7 @@ export interface RequiredOptions extends Options {
         gradient?: Gradient;
     };
     backgroundOptions: {
+        round: number;
         color: string;
         gradient?: Gradient;
     };

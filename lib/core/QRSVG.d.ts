@@ -3,6 +3,7 @@ import { QRCode, FilterFunction, Gradient } from "../types";
 export default class QRSVG {
     _element: SVGElement;
     _defs: SVGElement;
+    _backgroundClipPath?: SVGElement;
     _dotsClipPath?: SVGElement;
     _cornersSquareClipPath?: SVGElement;
     _cornersDotClipPath?: SVGElement;
@@ -13,7 +14,6 @@ export default class QRSVG {
     get width(): number;
     get height(): number;
     getElement(): SVGElement;
-    clear(): void;
     drawQR(qr: QRCode): Promise<void>;
     drawBackground(): void;
     drawDots(filter?: FilterFunction): void;
@@ -24,7 +24,7 @@ export default class QRSVG {
         height: number;
         count: number;
         dotSize: number;
-    }): void;
+    }): Promise<void>;
     _createColor({ options, color, additionalRotation, x, y, height, width, name }: {
         options?: Gradient;
         color?: string;

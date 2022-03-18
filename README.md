@@ -206,9 +206,9 @@ Gradient colorStops structure
 
 `QRCodeStyling.applyExtension(extension) => void`
 
-Param    |Type                  |Description
----------|----------------------|------------------------------------------------------------------------------------------
-extension|(svg, options) => void|Extension is a function that takes svg and previously applied options and modifies an svg
+| Param     | Type                   | Description                                                                               |
+| --------- | ---------------------- | ----------------------------------------------------------------------------------------- |
+| extension | (svg, options) => void | Extension is a function that takes svg and previously applied options and modifies an svg |
 
 `applyExtension` example
 
