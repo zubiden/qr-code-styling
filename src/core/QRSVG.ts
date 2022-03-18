@@ -38,7 +38,7 @@ export default class QRSVG {
   _cornersDotClipPath?: SVGElement;
   _options: RequiredOptions;
   _qr?: QRCode;
-  _image?: HTMLImageElement;
+  _image?: HTMLImageElement | SVGImageElement;
 
   //TODO don't pass all options to this class
   constructor(options: RequiredOptions) {
@@ -85,9 +85,14 @@ export default class QRSVG {
       const coverLevel = imageOptions.imageSize * errorCorrectionPercents[qrOptions.errorCorrectionLevel];
       const maxHiddenDots = Math.floor(coverLevel * count * count);
 
+      const originalWidth =
+        this._image instanceof SVGImageElement ? this._image.width.baseVal.value : this._image.naturalWidth;
+      const originalHeight =
+        this._image instanceof SVGImageElement ? this._image.height.baseVal.value : this._image.naturalHeight;
+
       drawImageSize = calculateImageSize({
-        originalWidth: this._image.width,
-        originalHeight: this._image.height,
+        originalWidth,
+        originalHeight,
         maxHiddenDots,
         maxHiddenAxisDots: count - 14,
         dotSize

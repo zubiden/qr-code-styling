@@ -9,7 +9,7 @@ export default class QRSVG {
     _cornersDotClipPath?: SVGElement;
     _options: RequiredOptions;
     _qr?: QRCode;
-    _image?: HTMLImageElement;
+    _image?: HTMLImageElement | SVGImageElement;
     constructor(options: RequiredOptions);
     get width(): number;
     get height(): number;
